@@ -23,6 +23,7 @@ Memory management in modern C++ @ TUES —  [Presentation](https://rawcdn.githac
 Introduction to Apache Spark @ TUES —  [Presentation](https://rawcdn.githack.com/arnaudoff/talks/8a1089f517f0836335543b05639e5e9774a48e89/03_05_2017_apache_spark_elsys/apache_spark.html)
 
 Introduction to category theory @ Sofia University, Faculty of Mathematics and
-Informatics —  [Presentation](),
+Informatics —  [Presentation](https://rawcdn.githack.com/arnaudoff/talks/ce0437ac51335fd74e9af045c4913dc99bccebb3/12_11_2018_category_theory_fmi/intro_to_cat_theory.html),
 [Transcript](12_11_2018_category_theory_fmi/README.md)
+
 

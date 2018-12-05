@@ -102,12 +102,12 @@ Typically, the topic of functions is interesting not only in programming context
 
 ### A note on total pure functions
 
-By the way, what we're really interested in is total pure functions. Most of the problems that arise in programming is because people use partial functions, e.g. a function is not defined for some of its arguments, and this typically leads to some code that throws exceptions and so on. Just as a side node, a funny definition for
-a pure function is a function that can be memoized, e.g. you can save it into a lookup table of some sort.
+By the way, what we're really interested in is total pure functions. Most of the problems that arise in programming happen because people use partial functions, e.g. a function is not defined for some of its arguments, and this typically leads to some code that throws exceptions and so on. Just as a side note, a funny definition for
+a pure function is a function that can be memoized, meaning you can save it into a lookup table of some sort.
 
 ### Directionality
 
-As you know from the discrete structures course, in set theory, functions are defined as relations, they're just a set of pairs. You already know what a domain and an image of a function is mathematically, so there's no point in explaining that. However, there's one fundamental concern about functions in category theory, and it's about function directionality. Directionality is a very important intuition about functions, and this intuition comes in handy afterwards when dealing with functors, natural transformations, which are other fundamental concepts from category theory.
+As you know from the discrete structures course, in set theory, functions are defined as relations, they're just a set of pairs. You already know what a domain and an image of a function is mathematically, so there's no point in explaining that. However, there's one fundamental concern about functions in category theory, and it's about function directionality. Directionality is a vital intuition to have about functions, and this intuition comes in handy afterwards when dealing with functors, natural transformations and so on, which are really fundamental concepts from category theory.
 
 ### Isomorphisms
 In general, the simplest way to understand whether there's directionality is to ask whether the function is invertible or not.
@@ -117,13 +117,13 @@ g :: b -> a
 
 f is invertible <=> g . f = id and f . g = id
 
-A function that's invertible is called isomorphism. Note that this is basically using category theory notation, so we're not talking about elements of sets. So this is a definition of isomorphism not only in the set category, but in any category, since it's expressed by only composition and identity.
+A function that's invertible is called isomorphism. Note that this is basically using category theory notation, so we're not talking about elements of sets. Therefore, this is a definition of isomorphism not only in the set category, but in any category, since it's expressed by only composition and identity.
 
-Isomorphisms are great, because they identify sets, in other words, they provide for identification. So for finite sets, an isomorphism is an identification of elements (one-to-one correspondence).
+Isomorphisms are great, because they identify sets. In other words, they provide for set identification => for finite sets, an isomorphism is an identification of elements (one-to-one correspondence).
 
 ### Monomorphisms and epimorphisms
 
-In set theory, we have the concepts of injective  and surjective functions. These ideas can also be translated into categorical terms, and it turns out we can express these ideas in terms of morphisms as well, which we're not going to do as we don't have the time. The point is that abstracting these two concepts lets you use them without the knowledge of the internal structure. In category theory, the terms for injections and surjections are monomorphisms and epimorphisms.
+In set theory, we have the concepts of injective and surjective functions. These ideas can also be translated into categorical terms, and it turns out we can express these ideas in terms of morphisms as well. Nevertheless, we're not going to do that, as we don't have the time. The point here is that abstracting these two concepts lets you use them without the knowledge of the internal structure. Fianlly, in category theory, the terms for injections and surjections are monomorphisms and epimorphisms.
 
 ## Functors
 
@@ -133,15 +133,15 @@ Now, the ones of you who have had exposure to
 functional programming outside of the university
 might be familiar with the concept, but it's vital to understand that functors are a mathematical concept and not a design pattern of some sort.
 
-One specific use case of functors is to formalize pattern matching. Imagine a category, and you want to recognize a pattern inside a category. A pattern must be some kind of structure, which means that we're going to model the pattern with a category, because as we said, categories essentially define structure. So to map that model into the actual category, we'll be using functors.
+One specific use case of functors is to formalize pattern matching. Imagine a category. You want to recognize a pattern inside that category. A pattern must be some kind of structure, which means that we're going to model the pattern with a category, because as said already, categories define structure. In order to map that model into the actual category, we'll be making use of functors.
 
 ### Definition
 
-So, to take that intuition one step ahead, mathematically speaking, a functor is a map from one category to another category.
+To take that intuition one step ahead, mathematically speaking, a functor is a map from one category to another category.
 
-It's important to realise that in mathematics, functions are somewhat primitive and trivial in the sense that they don't preserve structure (since they work on sets and sets have no structure). What we're really interested in mathematics and in the real world in general, is mappings that preserve structure. And functors are an example of such mappings.
+As a side note, it's crucial to realise that in mathematics, functions are somewhat primitive and trivial in the sense that they don't preserve structure (since they work on sets and sets have no structure). What we're really interested in mathematics and in the real world in general is mappings that preserve structure. And functors are exactly an example of such mappings.
 
-So a key take away is that functors are not just maps, but structure-preserving maps.
+The main takeaway is that functors are not just maps, but structure-preserving maps.
 
 ### Discrete categories
 
@@ -149,27 +149,26 @@ An interesting question that emerges is whether we have a notion for representin
 
 ### Mapping the arrows
 
-Now that we have a definition of a functor, knowing that it preserves structure means that it maps the arrows. So if you have any two objects a and b, and a functor called F, all the functor does is to map all of the arrows between a and b
+Now that we have the definition of a functor, we conclude that it maps the arrows. So if you have any two objects a and b, and a functor called F, all the functor does is to map all of the arrows between a and b
 into arrows from Fa to Fb. These arrows from a to b are obviously a set, and this set has a special name, called a hom-set. Same goes for arrows between Fa and Fb. If we call the first set C(a, b) and the second one D(Fa, Fb), the functor is actually the function (mathematical function, between sets) that maps from C(a, b) to D(Fa, Fb), so C(a, b) -> D(Fa, Fb).
 
-
-In other words, a functor has one big function that maps objects, and then there's a function we define for every home-set.
+In other words, a functor has one big function that maps objects, and then a function we define for every home-set.
 
 ### Mapping the arrows while preserving structure
 
-But we still haven't mentioned how exactly preserving structure is implemented. Well, so far we said that a category defines structure, but a category is defined by composition and identity. Therefore, all we need to do, is to ensure that the functor is mapping those compositions, as well as identities.
+But we still haven't mentioned how exactly preserving structure is implemented. Well, so far we said that a category defines structure, but a category is defined by composition and identity. Therefore, all we need to do is to ensure that the functor is mapping those compositions, as well as identities.
 
 ### Connection of functors to programming
 
-Most of the functors in programming will deal with a single category, because that's the category of types and functions. In principle, objects in one category can be mapped into objects in the same category, and morphisms in one category can be mapped into morphisms in the same category. And this type of functor is called an endo functor. In Haskell, for instance, endo functors are simply called functors.
+Most of the functors in programming deal with a single category: the category of types and functions. In principle, objects in one category can be mapped into objects in the same category, and morphisms in one category can be mapped into morphisms in the same category. This type of functor is called an endofunctor. In Haskell, for instance, endofunctors are simply called functors.
 
-Just doing a literal translation from the mathematical definition to our single category of types and functions leads us to the fact that a functor has to be a mapping of types (and it's a total mapping), which means it's a type constructor in Haskell (or generic type, parametric types etc. in other languages) and a mapping of functions. Of course, simply writing a functor doesn't mean that it's a functor, because you have to prove that it satisfies composability and identity, which typically is done with equational reasoning (you can reason about your code as if it was an algebraic expression).
+Just applying a literal translation from the mathematical definition to our single category of types and functions, we conclude that a functor has to be a mapping of types (a total mapping!), which means it's a type constructor in Haskell (or generic type, parametric type etc. in other languages) and a mapping of functions. Of course, simply writing a functor doesn't mean that it's a functor, because we have to prove that it satisfies composability and identity. Often times, we achieve this with equational reasoning (reasoning about your code as if it was an algebraic expression).
 
 ### A useful intuition about functors
 
-One way of looking at things is to say that a functor is a type constructor which supports fmap. Another way to think about the same thing is that functors typically have some value they are holding, like with the Maybe example, where we're potentially holding some value of type a. So a useful intuition about functors is to think of them as containers of some value, of course in the case of Maybe, the container could be empty.
+On the one hand, we can say that a functor is a type constructor which supports fmap. On the other hand, functors typically have some value they are holding, as with the Maybe example, where we're potentially holding some value of type a. Therefore, a useful intuition about functors is to think of them as containers of some value, where this very container could be empty.
 
-A better example than Maybe for that last intuition is defining a list as a coproduct. Applying the function to the contained value means applying the function to the head, and recursively applying it to the tail (code on the presentation). In general, applying a function can be thought of as opening the container, and applying the function if there's some value in the container.
+A better example than Maybe, though, is defining a list as a coproduct. Applying the function to the contained value means applying the function to the head, and recursively applying it to the tail (code on the presentation). In general, applying a function can be thought of as opening the container, and applying the function as long as there's something in the container.
 
 ## Kleisli category
 
@@ -179,50 +178,48 @@ This is a category which is very close to us programmers: it's based on that cat
 
 ### Kleisli category problem statement
 
-Imagine that we have a library of functions that we wrote. And one day, the manager comes and say there's a new requirement, and this requirement says that every function should leave an audit trail: whatever function you call should create a little log, which has to be appended to some global log. Therefore, we should rewrite the library so that every function leaves a trail.
+Imagine that we have a library of functions that we wrote. And one day, our manager comes and says there's a new requirement, and this requirement says that every function should leave an audit trail: whatever function you call should create a little log that has to be appended to some global log. Finally, we should rewrite the library so that every function leaves a trail.
 
 ### First possible solution
 
-The first solution that comes to the mind of an imperative programmer is to have a global log (code on the presentation). But what's wrong with such a solution? In the first place, we have a hidden dependency on that log variable, that's sort of a long-distance dependency. Secondly, there's no mention that this function writes to a global log: what happens if someone accidentally deletes this log variable? And at last, what happens if we have to use our library in multithreaded environment?
+The first solution that comes to the mind of an imperative programmer is to have a global log (code on the presentation). But what's wrong with such a solution? In the first place, we have a hidden dependency on that log variable, that's sort of a long-distance dependency. Secondly, there's no mention that this function writes to a global log: what happens if someone accidentally deletes this log variable? And at last, what happens if we have to use our library in a multithreaded environment?
 
 ### A little improvement on the first solution
 
-Another possible solution (or actually improvement of the first one), is to have all of the library functions return pairs of their actual type and a string, which is the log, but they also take a log (code on the presentation). Then, the  functions themselves will append to the log that's passed to them and return that new string to the caller.
+Another possible solution is to have all of the library functions return pairs of their actual type and a string, which is the log, but they can also take a log (code on the presentation). That way, the functions themselves will append to the log that's passed to them, and return that new string to the caller.
 
 But this solution is still not perfect, it breaks the separation of concerns principle: why do these function know about appending strings?
 
 ### Reaching the final solution
 
-Okay, so we're clearly not cool with passing logs as parameters and doing the appending in the function body, but we're fine with returning the result paired with what the function should log. But then, one may ask, how do we concatenate the logs? Who does the concatenation? And the answer is, since we're going to compose these functions either way, we're going to modify composition so that it does the normal composition, but also takes care of the log appending. In essence, we're defining our own way of composing functions (code on the slides). Keep that in mind, because it's a very powerful idea which has a specific name.
+Generally, we're not satisfied with passing logs as parameters and doing the appending in the function body, but we're fine with returning the result paired with what the function should log. But then, one may ask, how do we concatenate the logs? Who does the concatenation? And the answer is, since we're going to compose these functions either way, we're going to modify composition so that it does the normal composition, but also takes care of the log appending. In essence, we're defining our own way of composing functions (code on the slides). Keep that in mind, because it's a very powerful idea which has a specific name. And all of this makes a lot of sense, because if you think about it, appending strings is really part of the composition process.
 
-And all of this makes a lot of sense, because if you think about it, appending strings is really part of composing.
+Also, we have just defined a new way of composing things. Remember that a category is all about composition and identity. Do we have a category? The regular composition we're doing is associative, that's for sure. And fortunately, string concatenation is also associative, therefore concatenation of logs is also associative. We conclude that we have associativity satisfied for the new composition we defined. What about identity? Well, we can simply define a function that returns a pair, without doing any changes where the log is an empty string, and we're done! We've built a category! And this type of category has a name, it's called a Kleisli category.
 
-Also, we have just defined a new way of composing things. Remember that a category is all about composition and identity. Do we have a category? At first, the regular composition we're doing is absolutely associative, that's for sure. And fortunately, string concatenation is also associative, so concatenation of logs is also associative. So we have associativity satisfied for the new composition we defined. What about identity? Well, we can simply define a function that returns a pair, without doing any changes where the log is an empty string, and we're done! We built a category! And this type of category has a name, it's called a Kleisli category.
+The objects we defined are the types, the arrows however, are not abstractions for the regular functions between the types, but are abstractions for a sort of special functions, e.g. instead of a -> b, you have a -> pair<b, string>. The arrows that abstract these special functions, are called Kleisli arrows.
 
-The objects we defined are the types, the arrows however, are not the abstraction for the regular functions between the types, but are abstractions for a sort of special functions, e.g. instead of a -> b, you have a -> pair<b, string>. These arrows, that abstract these special functions, are called Kleisli arrows.
-
-Redefining the way to compose these special function is the key to understanding what a monad is.
+Redefining the way to compose these special functions is the key to understanding what a monad is.
 
 ### A note about string concatenation
 
-Note that we said string concatenation is associative and it has the identity defined (or also called a unit). That's a good example for another concept in category theory, which is the monoid. So our custom composition could still define a category, as long as we're supplying a monoid for the logs. In our concrete example, we're doing strings because they satisfy the monoid properties, but it's not necessary.
+Note that we said string concatenation is associative and it has identity defined (or also called a unit). That's a good example for another concept in category theory, which is the monoid. In other words, our custom composition could still define a category, as long as we're supplying a monoid for the logs. In our concrete example, we're using strings because they satisfy the monoid properties, but it's not a strict requirement.
 
 ## Monads
 
-After we've built a good intuition about Kleisli categories, we'll be reaching to the final destination: giving a brief introduction to one of the most misunderstood concepts in programming, monads.
+After we've built a good intuition about Kleisli categories, we'll be reaching to the final destination: introducing one of the most misleading concepts in programming – monads.
 
 ### The two categories construction
 
-We'll be examining a construction which is kind of weird, in which we'll be holding two categories in our head. The first one is the original category, say some random category C, in which we have objects and arrows, and we're trying to build another category, based on the first one, which will be the Kleisli category.
+We'll be examining a construction which is kind of weird, in which we'll be holding two categories in our head. The first one is the original category, say some random category C in which we have objects and arrows, the second one we're trying to build, based on the first one, which will be the Kleisli category.
 
-And we're viewing it the following way: the objects are directly "copied", meaning that the objects in our original category are the same as the objects in the new category we're building. However, the arrows in the new category are different.
+We're viewing it the following way: the objects are directly "copied", meaning that the objects in our original category are the same as the objects in the new category we're building. However, the arrows in the new category are different.
 
 If we look at the first category, imagine that we have something that for every object in that left category, gives us another object in the same category, for instance the mapping a -> (a, string). Let's call this mapping m a. Now, m is a mapping that maps objects to objects (types to types), so this is basically a functor, or more precisely, an endofunctor.
 
-Say in that left category, you have two objects now, a and b. You take the mapping of b, which we said we're going to call mb. If you take the arrow from a to mb, this is basically the "implementation" of the a to b arrow in the right category which we're building.
+Now let's assume that in the left category, you have two objects, a and b. You take the mapping of b, which we said we're going to call mb. If you take the arrow from a to mb, this is basically the "implementation" of the a to b arrow in the right category which we're building.
 
 ### Caveats concerning the "categority" of the right category
 
-I incorrectly used the term category for the Kleisli category, while explaining the above construction. We're actually not sure that the thing we're building on the right is actually a category. We have to check whether the arrows inside satisfy composition and identity. In the example we did before, we were lucky that such composition was possible.
+I incorrectly used the term category for the Kleisli category, while explaining the above construction. We're not certain that the thing we're building on the right is actually a category, because we have to check whether the arrows inside satisfy composition and identity. In the example we did beforehand, we were lucky that such composition was possible.
 
-And here's the big takeaway: if the Kleisli category on the right is actually a category, then we can say that this mapping m we defined, a -> (a, string) is a monad.
+And here's the big takeaway: if the Kleisli category on the right is definitely a category, then we say that the mapping m, described as a -> (a, string), is a monad.
